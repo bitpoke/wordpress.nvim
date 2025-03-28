@@ -58,4 +58,12 @@ function _M.null_ls_formatter(client)
     return false
 end
 
+function _M.setup(opts)
+    -- Register cmp source wordpress from cmp_wordpress module
+    local has_cmp, cmp = pcall(require, 'cmp')
+    if has_cmp then
+        cmp.register_source('wordpress', require('cmp_wordpress').new())
+    end
+end
+
 return _M
